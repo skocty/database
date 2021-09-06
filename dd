@@ -1,0 +1,21 @@
+USE [ksmirnov]
+GO
+
+INSERT INTO [dbo].[Material]
+           ([Title]
+           ,[CountInPack]
+           ,[Unit]
+           ,[CountInStock]
+           ,[MinCount]
+           ,[Cost]
+           ,[MaterialTypeID])
+    SELECT [Наименование материала]
+      ,[ Количество в упаковке]
+      ,[ Единица измерения]
+      ,[ Количество на складе]
+      ,[ Минимальный возможный остаток]
+      ,[ Стоимость]
+	  ,mt.id
+  FROM [dbo].[Лист1$materials_short_k_import] m, MaterialType mt
+  where m.[ Тип материала]=mt.Title
+GO
